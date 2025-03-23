@@ -1,0 +1,16 @@
+[project]
+name = "adhd-linguistic-patterns-beliefs-portuguese-women"
+version = "0.1.0"
+description = "Master Thesis for Computer Science and Engineering at Instituto Superior Técnico"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff>=0.11.2",
+]
+
+[project.scripts]
+adhd-linguistic-patterns-beliefs-portuguese-women = "adhd_linguistic_patterns_beliefs_portuguese_women:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

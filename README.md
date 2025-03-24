@@ -27,7 +27,7 @@ In the root directory of this project place the following commands in the termin
     ```
 2. Unzipping the dataset
     ```bash
-    unzip ./data/datasets/reddit-adhd-dataset.zip -d ./data/datasets/
+    unzip ./data/datasets/reddit-adhd-dataset.zip -d ./data/datasets/reddit-adhd-dataset/
         rm ./data/datasets/reddit-adhd-dataset.zip
     ```
 

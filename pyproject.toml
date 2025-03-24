@@ -5,6 +5,7 @@ description = "Master Thesis for Computer Science and Engineering at Instituto S
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pandas>=2.2.3",
 ]
 
 [dependency-groups]

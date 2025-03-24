@@ -696,12 +696,10 @@ __pycache__/
 .pytest_cache/
 *.whl
 .ruff_cache/
-*.ipynb
 .venv/
 requirements.txt
 packages/
 *.requirements.zip
-notebooks/
 
 # Cake - Uncomment if you are using it
 # tools/**

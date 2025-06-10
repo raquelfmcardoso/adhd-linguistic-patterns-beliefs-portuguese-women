@@ -25,9 +25,9 @@ dev = [
     "ruff>=0.9.10",
 ]
 
-[project.scripts]
-adhd-linguistic-patterns-beliefs-portuguese-women = "adhd_linguistic_patterns_beliefs_portuguese_women:main"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]

@@ -12,13 +12,17 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "pip" },
+    { name = "pyarrow" },
     { name = "scikit-learn" },
     { name = "seaborn" },
+    { name = "sentence-transformers" },
     { name = "spacy" },
+    { name = "stanza" },
     { name = "tensor" },
     { name = "textblob" },
     { name = "torch" },
     { name = "transformers" },
+    { name = "wordcloud" },
 ]
 
 [package.dev-dependencies]
@@ -34,13 +38,17 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.2.5" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pip", specifier = ">=25.1" },
+    { name = "pyarrow", specifier = ">=20.0.0" },
     { name = "scikit-learn", specifier = ">=1.6.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
+    { name = "sentence-transformers", specifier = ">=4.1.0" },
     { name = "spacy", specifier = ">=3.8.5" },
+    { name = "stanza", specifier = ">=1.10.1" },
     { name = "tensor", specifier = ">=0.3.6" },
     { name = "textblob", specifier = ">=0.19.0" },
     { name = "torch", specifier = ">=2.7.0" },
     { name = "transformers", specifier = ">=4.51.3" },
+    { name = "wordcloud", specifier = ">=1.9.4" },
 ]
 
 [package.metadata.requires-dev]
@@ -463,6 +471,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/0f/d5/c66da9b79e5bdb124974bfe172b4daf3c984ebd9c2a06e2b8a4dc7331c72/defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69", size = 75520 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61", size = 25604 },
+]
+
+[[package]]
+name = "emoji"
+version = "2.14.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cb/7d/01cddcbb6f5cc0ba72e00ddf9b1fa206c802d557fd0a20b18e130edf1336/emoji-2.14.1.tar.gz", hash = "sha256:f8c50043d79a2c1410ebfae833ae1868d5941a67a6cd4d18377e2eb0bd79346b", size = 597182 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/91/db/a0335710caaa6d0aebdaa65ad4df789c15d89b7babd9a30277838a7d9aac/emoji-2.14.1-py3-none-any.whl", hash = "sha256:35a8a486c1460addb1499e3bf7929d3889b2e2841a57401903699fef595e942b", size = 590617 },
 ]
 
 [[package]]
@@ -1659,6 +1676,23 @@ wheels = [
 ]
 
 [[package]]
+name = "pyarrow"
+version = "20.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/ee/a7810cb9f3d6e9238e61d312076a9859bf3668fd21c69744de9532383912/pyarrow-20.0.0.tar.gz", hash = "sha256:febc4a913592573c8d5805091a6c2b5064c8bd6e002131f01061797d91c783c1", size = 1125187 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5b/23/77094eb8ee0dbe88441689cb6afc40ac312a1e15d3a7acc0586999518222/pyarrow-20.0.0-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:c7dd06fd7d7b410ca5dc839cc9d485d2bc4ae5240851bcd45d85105cc90a47d7", size = 30832591 },
+    { url = "https://files.pythonhosted.org/packages/c3/d5/48cc573aff00d62913701d9fac478518f693b30c25f2c157550b0b2565cb/pyarrow-20.0.0-cp310-cp310-macosx_12_0_x86_64.whl", hash = "sha256:d5382de8dc34c943249b01c19110783d0d64b207167c728461add1ecc2db88e4", size = 32273686 },
+    { url = "https://files.pythonhosted.org/packages/37/df/4099b69a432b5cb412dd18adc2629975544d656df3d7fda6d73c5dba935d/pyarrow-20.0.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6415a0d0174487456ddc9beaead703d0ded5966129fa4fd3114d76b5d1c5ceae", size = 41337051 },
+    { url = "https://files.pythonhosted.org/packages/4c/27/99922a9ac1c9226f346e3a1e15e63dee6f623ed757ff2893f9d6994a69d3/pyarrow-20.0.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:15aa1b3b2587e74328a730457068dc6c89e6dcbf438d4369f572af9d320a25ee", size = 42404659 },
+    { url = "https://files.pythonhosted.org/packages/21/d1/71d91b2791b829c9e98f1e0d85be66ed93aff399f80abb99678511847eaa/pyarrow-20.0.0-cp310-cp310-manylinux_2_28_aarch64.whl", hash = "sha256:5605919fbe67a7948c1f03b9f3727d82846c053cd2ce9303ace791855923fd20", size = 40695446 },
+    { url = "https://files.pythonhosted.org/packages/f1/ca/ae10fba419a6e94329707487835ec721f5a95f3ac9168500bcf7aa3813c7/pyarrow-20.0.0-cp310-cp310-manylinux_2_28_x86_64.whl", hash = "sha256:a5704f29a74b81673d266e5ec1fe376f060627c2e42c5c7651288ed4b0db29e9", size = 42278528 },
+    { url = "https://files.pythonhosted.org/packages/7a/a6/aba40a2bf01b5d00cf9cd16d427a5da1fad0fb69b514ce8c8292ab80e968/pyarrow-20.0.0-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:00138f79ee1b5aca81e2bdedb91e3739b987245e11fa3c826f9e57c5d102fb75", size = 42918162 },
+    { url = "https://files.pythonhosted.org/packages/93/6b/98b39650cd64f32bf2ec6d627a9bd24fcb3e4e6ea1873c5e1ea8a83b1a18/pyarrow-20.0.0-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:f2d67ac28f57a362f1a2c1e6fa98bfe2f03230f7e15927aecd067433b1e70ce8", size = 44550319 },
+    { url = "https://files.pythonhosted.org/packages/ab/32/340238be1eb5037e7b5de7e640ee22334417239bc347eadefaf8c373936d/pyarrow-20.0.0-cp310-cp310-win_amd64.whl", hash = "sha256:4a8b029a07956b8d7bd742ffca25374dd3f634b35e46cc7a7c3fa4c75b297191", size = 25770759 },
+]
+
+[[package]]
 name = "pyasn1"
 version = "0.6.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2078,6 +2112,25 @@ wheels = [
 ]
 
 [[package]]
+name = "sentence-transformers"
+version = "4.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub" },
+    { name = "pillow" },
+    { name = "scikit-learn" },
+    { name = "scipy" },
+    { name = "torch" },
+    { name = "tqdm" },
+    { name = "transformers" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/73/84/b30d1b29ff58cfdff423e36a50efd622c8e31d7039b1a0d5e72066620da1/sentence_transformers-4.1.0.tar.gz", hash = "sha256:f125ffd1c727533e0eca5d4567de72f84728de8f7482834de442fd90c2c3d50b", size = 272420 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/45/2d/1151b371f28caae565ad384fdc38198f1165571870217aedda230b9d7497/sentence_transformers-4.1.0-py3-none-any.whl", hash = "sha256:382a7f6be1244a100ce40495fb7523dbe8d71b3c10b299f81e6b735092b3b8ca", size = 345695 },
+]
+
+[[package]]
 name = "setuptools"
 version = "78.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2218,6 +2271,25 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/28/e3/55dcc2cfbc3ca9c29519eb6884dd1415ecb53b0e934862d3559ddcb7e20b/stack_data-0.6.3.tar.gz", hash = "sha256:836a778de4fec4dcd1dcd89ed8abff8a221f58308462e1c4aa2a3cf30148f0b9", size = 44707 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f1/7b/ce1eafaf1a76852e2ec9b22edecf1daa58175c090266e9f6c64afcd81d91/stack_data-0.6.3-py3-none-any.whl", hash = "sha256:d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695", size = 24521 },
+]
+
+[[package]]
+name = "stanza"
+version = "1.10.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "emoji" },
+    { name = "networkx" },
+    { name = "numpy" },
+    { name = "protobuf" },
+    { name = "requests" },
+    { name = "tomli" },
+    { name = "torch" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ee/d3/1e849c2fd5c31250534407205dcf10265defce35795c7fc9846d3b689848/stanza-1.10.1.tar.gz", hash = "sha256:f1b283021323ef9273fb1a751a194c0d568e373a2a11b933e2f4b600322406b2", size = 901628 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ac/f6/c50d0ee85e40687a81a95d90d426938d0d83ac0683efa2b87fa4110b665c/stanza-1.10.1-py3-none-any.whl", hash = "sha256:d0ebc22c7e7a201077e0ed88d2450e654acadb4ea0d8584d5a5eb2ae1e65c060", size = 1112060 },
 ]
 
 [[package]]
@@ -2625,6 +2697,31 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/56/fc/238c424fd7f4ebb25f8b1da9a934a3ad7c848286732ae04263661eb0fc03/widgetsnbextension-4.0.13.tar.gz", hash = "sha256:ffcb67bc9febd10234a362795f643927f4e0c05d9342c727b65d2384f8feacb6", size = 1164730 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/21/02/88b65cc394961a60c43c70517066b6b679738caf78506a5da7b88ffcb643/widgetsnbextension-4.0.13-py3-none-any.whl", hash = "sha256:74b2692e8500525cc38c2b877236ba51d34541e6385eeed5aec15a70f88a6c71", size = 2335872 },
+]
+
+[[package]]
+name = "wordcloud"
+version = "1.9.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "pillow" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/03/a1/0530b9001b05dcd13de21c2d4d821db5365dade5180242179fbc39372c57/wordcloud-1.9.4.tar.gz", hash = "sha256:b273d8a5ded97d3ead904046b49464dcb71119ee79df875072a4c105cadd347a", size = 27563753 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8a/b0/21ab9282e5922ccd23b67050151476a4a32a7678d59bad4aa46534615afa/wordcloud-1.9.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:61a84e7311fce8415943edcb7b2ba65b4bfec1dc6dff8fe5a8ea76e278447fb2", size = 171753 },
+    { url = "https://files.pythonhosted.org/packages/54/e5/7969f3b4a58bd4ac19e60e86f6a23925c19416ec065725b530f40c692e0e/wordcloud-1.9.4-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:8e8752750726f31385f364823d3ef1d9c8ec829e5c07706c36beb40679945c71", size = 167716 },
+    { url = "https://files.pythonhosted.org/packages/dc/2a/a6d5c03decbe145858e777e80dbbf92697da9728c9d0c71c1c81a2d68e35/wordcloud-1.9.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:990dfd6dd43a1c7fa156be865eb98aba167a986b65f56cbf50e24772107fcd70", size = 511106 },
+    { url = "https://files.pythonhosted.org/packages/e2/1e/663284794aedbaeb58939d3df391725de6d3966d4f742f6ff37ae7181a1b/wordcloud-1.9.4-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:a70fe8999cd63aec64daa0377b720be6e5ff344963b828caeb4c2a081599a3a0", size = 493431 },
+    { url = "https://files.pythonhosted.org/packages/2f/76/971e2689430555fb1a04f148a4888f0b4d20873f19d1e04c02ff1e613b60/wordcloud-1.9.4-cp310-cp310-musllinux_1_2_i686.whl", hash = "sha256:37dcd5500cc2ea02950739390e89e2efa6624c2f54b5e2df1ee961fce685b2d7", size = 514561 },
+    { url = "https://files.pythonhosted.org/packages/76/40/eb530e49348f8acac2351843f886f74ea6f17e99c349aad6d583029d60f7/wordcloud-1.9.4-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:f5cc5c902dc2492b9fc0e29a1f5c688422d7e6eb9e5c0e43f0331d1c8e1341ba", size = 530938 },
+    { url = "https://files.pythonhosted.org/packages/c5/56/ac3d6bab585ac2a9fc7d3aec4f25832188ad1d7d81815dbca9e7017709e6/wordcloud-1.9.4-cp310-cp310-win32.whl", hash = "sha256:c20fbb51af2046c940b4fead4bafffc30b4191f5fb477c3af844446d8956bfd4", size = 289958 },
+    { url = "https://files.pythonhosted.org/packages/79/59/7a85f2be948999e16b88574cc8341524a4042b4544d1904b08a652f7f415/wordcloud-1.9.4-cp310-cp310-win_amd64.whl", hash = "sha256:61a153e76d73c72f5cc6c89ee80ddad70758a207c3c6b1d86be8635ec70164f1", size = 299767 },
+    { url = "https://files.pythonhosted.org/packages/63/6b/886a158a7ccc9c4c0a5ff2f3d45623b66da1af73c75584bc25113dff5e36/wordcloud-1.9.4-pp310-pypy310_pp73-macosx_10_15_x86_64.whl", hash = "sha256:f733cca468eae79af83cdda1de2434f1799cefef461ed892e7679d5a4c929fa1", size = 157970 },
+    { url = "https://files.pythonhosted.org/packages/4d/c5/180698e0f0e6bb42b3a173ce47d0474649dfcfa9bd60c902609e5707fde6/wordcloud-1.9.4-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3a99f96efe5983c6eed17abb8766ced713ddf18b26450da74addc91570922e62", size = 171923 },
+    { url = "https://files.pythonhosted.org/packages/a2/b9/94ca10d94b6f64ab55a7bacc3d9e30df339a8d3607d1919099d12da12024/wordcloud-1.9.4-pp310-pypy310_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:80773ec6a9caa2048602bc347151e3b6e68e1d8fab148dfd0d2e7d4302ce5c01", size = 172780 },
+    { url = "https://files.pythonhosted.org/packages/e6/ed/35af241d0243ed82f5231a4e4dbabfdb421fba2b64fd4bdd66b413ad5c04/wordcloud-1.9.4-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:ca95392bba150190cca8df4a97854b554bdeb28007f28bf4698bd7e1af91b310", size = 295073 },
 ]
 
 [[package]]

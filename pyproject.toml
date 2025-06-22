@@ -6,17 +6,26 @@ readme = "README.md"
 requires-python = "==3.10.12"
 dependencies = [
     "bokeh>=3.7.2",
+    "faker>=37.4.0",
+    "lxml>=5.4.0",
     "matplotlib>=3.10.1",
     "numpy>=2.2.5",
+    "openpyxl>=3.1.5",
     "pandas>=2.2.3",
     "pip>=25.1",
+    "presidio-analyzer>=2.2.358",
+    "presidio-anonymizer>=2.2.358",
+    "pyarrow>=20.0.0",
     "scikit-learn>=1.6.1",
     "seaborn>=0.13.2",
+    "sentence-transformers>=4.1.0",
     "spacy>=3.8.5",
+    "stanza>=1.10.1",
     "tensor>=0.3.6",
     "textblob>=0.19.0",
     "torch>=2.7.0",
     "transformers>=4.51.3",
+    "wordcloud>=1.9.4",
 ]
 
 [dependency-groups]

@@ -7,7 +7,9 @@ requires-python = "==3.10.12"
 dependencies = [
     "ace-tools>=0.0",
     "baycomp>=1.0.3",
+    "bertopic[visualization]>=0.17.3",
     "bokeh>=3.7.2",
+    "ctransformers[cuda]>=0.2.27",
     "deep-translator>=1.11.4",
     "faker>=37.4.0",
     "googletrans==4.0.0rc1",
@@ -26,6 +28,7 @@ dependencies = [
     "scikit-posthocs>=0.11.4",
     "seaborn>=0.13.2",
     "sentence-transformers>=4.1.0",
+    "shap>=0.48.0",
     "spacy>=3.8.5",
     "stanza>=1.10.1",
     "statsmodels>=0.14.4",
@@ -33,6 +36,7 @@ dependencies = [
     "textblob>=0.19.0",
     "torch>=2.7.0",
     "transformers>=4.51.3",
+    "umap-learn>=0.5.9.post2",
     "wordcloud>=1.9.4",
 ]
 

@@ -11,6 +11,10 @@ import torch
 import datetime
 import logging
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -42,8 +46,7 @@ def run_bertopic_model(df, model, text_column, embedding_column, min_topic_size=
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
     logging.info(f"Using device: {device}")
-
-    access_token = "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"
+    access_token = os.getenv("HUGGING_FACE_TOKEN")
 
     generator = pipeline(
         "text-generation",
@@ -119,7 +122,7 @@ def main():
     df = pd.read_pickle("data/adhd-beliefs-pt/adhd-beliefs-pt-embeddings-serafim.pkl")
     logging.info(f"Data loaded with {len(df)} rows and {len(df.columns)} columns.")
 
-    model = "mistralai/Magistral-Small-2506"
+    model = "meta-llama/Llama-3.1-8B-Instruct"
     model_id = model.split("/")[-1]
 
     for column in columns:

@@ -772,3 +772,5 @@ swagger.json
 src/generated
 
 data/
+
+src/outputs/

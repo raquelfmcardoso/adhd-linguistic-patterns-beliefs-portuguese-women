@@ -48,8 +48,9 @@ def run_bertopic_model(df, texts, embeddings, folder_name, min_cluster_size=5):
     [DOCUMENTS]
     O tópico é descrito pelas seguintes palavras-chave: [KEYWORDS]
 
-    Com base na informação acima, extrai um rótulo de tópico curto, mas altamente descritivo, de no máximo 5 palavras. Certifica-te de que está no seguinte formato:
-    tópico: <rótulo tópico>
+    Com base na informação acima, extrai um rótulo de tópico curto, mas altamente descritivo, de no máximo 5 palavras.
+    Escreve-o em Inglês e certifica-te de que está no seguinte formato:
+    topic: <topic label>
     """
         
     # best practices for BERTopic
@@ -96,21 +97,6 @@ def run_bertopic_model(df, texts, embeddings, folder_name, min_cluster_size=5):
     topic_model.save(f"data/adhd-beliefs-pt/bertopic_models/{folder_name}/", serialization="safetensors", save_ctfidf=True, save_embedding_model=embedding_model)
     return df, topic_model, topics, probs
 
-def preprocess_data(df):
-    question_types = ["special_interest", "diary_entry", "selfdefining_memory", "empty_sheet"]
-    topic_df = pd.concat([df.assign(question=q) for q in question_types], ignore_index=False)
-    topic_df["response"] = topic_df.apply(lambda row: row[row["question"]], axis=1)
-    topic_df["response_embedding"] = topic_df.apply(lambda row: row[f"{row['question']}_embedding"], axis=1)
-    topic_df = topic_df.drop(columns=["special_interest", "diary_entry", "selfdefining_memory", "empty_sheet", "merged_text", "special_interest_embedding", "diary_entry_embedding", "selfdefining_memory_embedding", "empty_sheet_embedding", "merged_text_embedding"])
-    topic_df = topic_df.dropna(subset=["response"])
-    question_counts = topic_df["question"].value_counts()
-    logging.info(f"Question counts:\n{question_counts}")
-    topic_df['group'] = (
-        topic_df['sex'].map({'Feminino':'Female','Masculino':'Male'}).astype(str) + '_' +
-        np.where(topic_df['adhd_diagnosis']=="Sim, diagnosticado", 'ADHD', 'noADHD')
-    )
-    return topic_df
-
 def main():
     # === Force CUDA and GPU config ===
     assert torch.cuda.is_available(), "No GPU detected!"
@@ -119,11 +105,8 @@ def main():
     device = f"cuda:{device_id}"
     logging.info(f"Using device: {device}")
     
-    
-    logging.info("Starting data preprocessing...")
-    df = pd.read_pickle("data/adhd-beliefs-pt/adhd-beliefs-pt-embeddings-serafim.pkl")
-    topic_df = preprocess_data(df)
-    logging.info("Data preprocessing completed.")
+    logging.info("Starting data loading...")
+    topic_df = pd.read_pickle("data/adhd-beliefs-pt/adhd-beliefs-pt-embeddings-serafim-bertopic.pkl")
     logging.info(f"Data loaded with {len(topic_df)} rows and {len(topic_df.columns)} columns.")
 
     logging.info("Starting BERTopic clustering...")

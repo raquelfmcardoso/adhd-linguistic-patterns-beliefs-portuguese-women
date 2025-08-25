@@ -89,7 +89,6 @@ def run_bertopic_model(df, texts, embeddings, folder_name, min_cluster_size=5):
     )
 
     topics, probs = topic_model.fit_transform(texts, embeddings)
-    # new_topics = topic_model.reduce_outliers(texts, topics)
     df["topic"] = topics
     df["probability"] = [probs[i][topic] if topic != -1 else 0.0 for i, topic in enumerate(topics)]
     
@@ -102,31 +101,34 @@ def run_bertopic_model(df, texts, embeddings, folder_name, min_cluster_size=5):
     return df, topic_model, topics, probs
 
 def main():
-    # === Force CUDA and GPU config ===
-    # assert torch.cuda.is_available(), "No GPU detected!"
-    # device_id = 1 
-    # torch.cuda.set_device(device_id) 
-    # device = f"cuda:{device_id}"
-    # logging.info(f"Using device: {device}")
     
     print("Starting data loading...")
     topic_df = pd.read_pickle("data/adhd-beliefs-pt/adhd-beliefs-pt-embeddings-serafim-bertopic.pkl")
     print(f"Data loaded with {len(topic_df)} rows and {len(topic_df.columns)} columns.")
     print("Starting BERTopic clustering...")
 
-    def calculate_min_cluster_size(num_texts):
-        """Calculate min_cluster_size based on actual group sizes in the dataset"""
-        if num_texts <= 30:
-            return 2  # Very small groups (≤30): minimum viable clusters
-        elif num_texts <= 70:
-            return 2  # Small groups (31-60): allow for 3-4 clusters
-        elif num_texts <= 120:
-            return 2  # Medium-small groups (61-120): allow for 4-6 clusters  
-        elif num_texts <= 250:
-            return 4  # Medium groups (121-250): allow for 5-10 clusters
-        else:
-            return 5  # Large groups (250+): scale appropriately
-    
+    def get_min_cluster_size(group_name):
+        """Get the minimum cluster size for a specific group name."""
+        if group_name == "Female_ADHD":
+            return 2
+        elif group_name == "Others":
+            return 6
+        elif group_name == "Female_noADHD":
+            return 4
+        elif group_name == "Male_ADHD":
+            return 2
+        elif group_name == "Male_noADHD":
+            return 2
+        elif group_name == "Female":
+            return 4
+        elif group_name == "Male":
+            return 3
+        elif group_name == "ADHD":
+            return 3
+        elif group_name == "noADHD":
+            return 6
+        return 6
+
     column = "response"
     df_women_adhd = topic_df[topic_df["group"] == "Female_ADHD"]
     df_others = topic_df[topic_df["group"] != "Female_ADHD"]
@@ -136,6 +138,8 @@ def main():
     df_women = topic_df[topic_df["group"].isin(["Female_ADHD", "Female_noADHD"])]
     df_men = topic_df[topic_df["group"].isin(["Male_ADHD", "Male_noADHD"])]
     df_all = topic_df
+    df_adhd = topic_df[topic_df["group"].isin(["Male_ADHD", "Female_ADHD"])]
+    df_noadhd = topic_df[topic_df["group"].isin(["Male_noADHD", "Female_noADHD"])]
 
     group_names = [
         "Female_ADHD",
@@ -145,10 +149,12 @@ def main():
         "Male_noADHD",
         "Female",
         "Male",
-        "All"
+        "All",
+        "ADHD",
+        "noADHD"
     ]
-    
-    dfs = [df_women_adhd, df_others, df_women_noadhd, df_men_adhd, df_men_noadhd, df_women, df_men, df_all]
+
+    dfs = [df_women_adhd, df_others, df_women_noadhd, df_men_adhd, df_men_noadhd, df_women, df_men, df_all, df_adhd, df_noadhd]
     time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     for df_group, group_name in zip(dfs, group_names):
         print("=" * 60)
@@ -156,11 +162,10 @@ def main():
         texts = df_group[column].tolist()
         embeddings = np.vstack(df_group[f"{column}_embedding"])
         
-        # Calculate adaptive min_cluster_size based on group size
-        adaptive_min_cluster_size = calculate_min_cluster_size(len(texts))
+        adaptive_min_cluster_size = get_min_cluster_size(group_name)
         print(f"Group {group_name}: {len(texts)} texts, using min_cluster_size={adaptive_min_cluster_size}")
-        
-        folder_name = f"{group_name}_{time}_2"
+
+        folder_name = f"{group_name}_{time}_minsize{adaptive_min_cluster_size}"
         df_group, topic_model, topics, probs = run_bertopic_model(df_group, texts, embeddings, folder_name, min_cluster_size=adaptive_min_cluster_size)
         os.makedirs(f"data/adhd-beliefs-pt/bertopic_dfs/", exist_ok=True)
         df_group.to_pickle(f"data/adhd-beliefs-pt/bertopic_dfs/{folder_name}.pkl")

@@ -111,6 +111,8 @@ def get_cluster_sizes(group_name):
             return [2]
         elif group_name == "Female_noADHD":
             return [3]
+        elif group_name == "ADHD":
+            return [2]
         elif group_name == "noADHD":
             return [3]
         return [5]
@@ -121,6 +123,8 @@ def get_reduced_topics(group_name):
         return 9
     elif group_name == "Female_noADHD":
         return 16
+    elif group_name == "ADHD":
+        return 14
     elif group_name == "noADHD":
         return 27
     return 1
@@ -135,14 +139,16 @@ def main():
     column = "response"
     df_women_adhd = topic_df[topic_df["group"] == "Female_ADHD"]
     df_women_noadhd = topic_df[topic_df["group"] == "Female_noADHD"]
+    df_adhd = topic_df[topic_df["group"].isin(["Male_ADHD", "Female_ADHD"])]
     df_noadhd = topic_df[topic_df["group"].isin(["Male_noADHD", "Female_noADHD"])]
 
     group_names = [
         "Female_ADHD",
         "Female_noADHD",
+        "ADHD",
         "noADHD"
     ]
-    dfs = [df_women_adhd, df_women_noadhd, df_noadhd]
+    dfs = [df_women_adhd, df_women_noadhd, df_adhd, df_noadhd]
     for df_group, group_name in zip(dfs, group_names):
         print("=" * 60)
         print(f"Starting BERTopic clustering for {group_name}.")

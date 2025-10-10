@@ -9,10 +9,6 @@ This project is part of my Master's Thesis in Computer Science and Engineering, 
 - [💾 Installation](#-installation)
 - [🖍️ Usage](#-usage)
 
-## 🎬 Introduction
-<!-- Add a brief introduction about the project and its objectives. -->
-
-
 ## 💿 Datasets
 For the first tests and experimentation I'm utilizing the "Reddit ADHD Dataset" by user Jerseyneo on Kaggle.
 
@@ -31,50 +27,6 @@ In the root directory of this project place the following commands in the termin
         rm ./data/datasets/reddit-adhd-dataset.zip
     ```
 
-### 📝 Emotions in Text Dataset
-In the root directory of this project place the following commands in the terminal:
-
-1. Downloading the dataset .zip via cURL
-    ```bash
-    #!/bin/bash
-    curl -L -o ./data/datasets/emotions-in-text.zip\
-        https://www.kaggle.com/api/v1/datasets/download/ishantjuyal/emotions-in-text
-    ```
-2. Unzipping the dataset
-    ```bash
-    unzip ./data/datasets/emotions-in-text.zip -d ./data/datasets/emotions-in-text/
-        rm ./data/datasets/emotions-in-text.zip
-    ```
-
-### 📝 Liberals vs Conservatives on Reddit Dataset
-In the root directory of this project place the following commands in the terminal:
-
-1. Downloading the dataset .zip via cURL
-    ```bash
-    #!/bin/bash
-    curl -L -o ./data/datasets/liberals-vs-conservatives.zip\
-        https://www.kaggle.com/api/v1/datasets/download/neelgajare/liberals-vs-conservatives-on-reddit-13000-posts
-    ```
-2. Unzipping the dataset
-    ```bash
-    unzip ./data/datasets/liberals-vs-conservatives.zip -d ./data/datasets/liberals-vs-conservatives/
-        rm ./data/datasets/liberals-vs-conservatives.zip
-    ```
-
-### 📝 Gaming Subreddit Dataset
-In the root directory of this project place the following commands in the terminal:
-
-1. Downloading the dataset .zip via cURL
-    ```bash
-    #!/bin/bash
-    curl -L -o ./data/datasets/r-gaming.zip\
-        https://www.kaggle.com/api/v1/datasets/download/thedevastator/uncovering-social-behavior-in-r-gaming-analyzing
-    ```
-2. Unzipping the dataset
-    ```bash
-    unzip ./data/datasets/r-gaming.zip -d ./data/datasets/r-gaming/
-        rm ./data/datasets/r-gaming.zip
-    ```
 
 ## 💾 Installation
 This project uses **[uv](https://docs.astral.sh/uv/getting-started/installation/#installing-uv)** as the project manager of Python version and dependencies.
@@ -94,8 +46,3 @@ This project uses **[uv](https://docs.astral.sh/uv/getting-started/installation/
     ```bash
     uv run pre-commit install
     ```
-
-
-## 🖍️ Usage
-<!-- Explain how to use the project, including examples if necessary. -->
-

@@ -19,7 +19,7 @@ Because clustering in high-dimensional spaces is known to be unstable, the embed
 
 Clustering was then performed with **HDBSCAN**, a density-based algorithm able to detect clusters of varying size and to treat non-conforming documents as noise points. This choice avoided the need to pre-specify the number of clusters, as required in K-Means (MacQueen, 1967), which prevented the imposition of an artificial topic structure.
 
-However, it required specifying the minimum documents per cluster in order to balance thematic coherence with interpretability (see **Appendix G** MUDAR PARA AQUI UM FICHEIRO DAQUI). In cases where the clustering results produced excessively fragmented topics, we used BERTopic's `reduce_topics` method to merge semantically similar clusters. Outlier documents that could not be assigned to any cluster were placed in a specified invalid cluster (`ID = -1`) and were excluded from subsequent analysis.  
+However, it required specifying the minimum documents per cluster in order to balance thematic coherence with interpretability ([see Cluster Finetuning](./cluster_finetuning.md)). In cases where the clustering results produced excessively fragmented topics, we used BERTopic's `reduce_topics` method to merge semantically similar clusters. Outlier documents that could not be assigned to any cluster were placed in a specified invalid cluster (`ID = -1`) and were excluded from subsequent analysis.  
 
 **Table 1** reports the final number of valid documents, topics, and the minimum documents per cluster for each group.
 
